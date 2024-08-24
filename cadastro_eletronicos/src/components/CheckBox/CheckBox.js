@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import './CheckBox.css'
 
 const CheckBox = (props)=>{
 
@@ -7,7 +8,7 @@ const CheckBox = (props)=>{
     }
 
     return(
-        <div>
+        <div className="checkbox">
             <input type="checkbox" value={props.value} onChange={chosen}/> {props.value}
         </div>
     )
