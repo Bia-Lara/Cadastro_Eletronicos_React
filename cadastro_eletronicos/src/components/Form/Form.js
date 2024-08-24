@@ -3,13 +3,16 @@ import Select from "../Select/Select";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 import CheckBox from "../CheckBox/CheckBox";
+import './Form.css'
+
 
 const Form = (props)=>{
 
     const sections=["Computadores",
         "Acessórios",
         "Impressoras",
-        "Games,Gadgets"]
+        "Games",
+        "Gadgets"]
 
     const brands=["HP",
         "Dell",
@@ -24,29 +27,84 @@ const Form = (props)=>{
     const [isNewChecked, setIsNewChecked] = useState(false);
     const [isUsedChecked, setIsUsedChecked] = useState(false);
 
+    const validateForm = () => {
+        return name.trim() !== '' && price !== '' && (isNewChecked || isUsedChecked);
+    };
+
     const save = (e)=>{
         e.preventDefault();
-        console.log(section, brand, name, price, isNewChecked? "Novo": "", isUsedChecked? "Usado":"")
+
+        if (!validateForm()) {
+            alert("Por favor, preencha todos os campos antes de enviar.");
+            return;
+        }
+
+        let img =''
+
+        if(brand === "HP"){
+            img= "hp.png"
+        }
+
+        if(brand === "Dell"){
+            img= "dell.png"
+        }
+
+        if(brand === "Positivo"){
+            img = "positivo.png"
+        }
+
+        if(brand === "Asus"){
+            img = "asus.png"
+        }
+
+        if(brand === "Xing Ling genérico"){
+            img ="xingLing.png"
+        }
+
+        props.onRegister(
+            {
+                "name": name,
+                "price": price,
+                "section" : section,
+                "brand" : brand,
+                "state": isNewChecked? "Novo" : "Usado",
+                "img" : img 
+                
+            }
+        )
+
+
+        setSection('Computadores');
+        setBrand('HP');
+        setName('');
+        setPrice('');
+    
     }
+
+    
 
 
     return(
-        <div>
+        
+        <div className="form">
             <form onSubmit={save}>
-                <Select label="Seção" itens={sections} changed={value=>setSection(value)}/>
+                <Select label="Seção" itens={props.sections} changed={value=>setSection(value)}/>
                 <Select label="Marca" itens={brands} changed={value=>setBrand(value)}/>
                 
-                <Input type="text" label="Nome" placeholder="Digite o nome do produto" changed={value=>setName(value)}/>
-                <Input type="number" label="Preço" placeholder="Digite o preço do produto" changed={value=>setPrice(value)}/>
+                <Input type="text" label="Nome" value={name} changed={value=>setName(value)}/>
+                <Input type="number" label="Preço" value={price} step="0.01" min="0"  changed={value=>setPrice(value)}/>
                 
-                <CheckBox value="Novo" isChecked={isNewChecked} changed={setIsNewChecked} />
-                <CheckBox value="Usado" isChecked={isUsedChecked} changed={setIsUsedChecked} />
+                <div className="divCheckBoxs">
+                    <CheckBox value="Novo" isChecked={isNewChecked} changed={setIsNewChecked} />
+                    <CheckBox value="Usado" isChecked={isUsedChecked} changed={setIsUsedChecked} />
+                </div>
+                
 
                 <Button type="submit" text="Enviar"/>
-                
-            
             </form>
         </div>
+            
+
     )
 }
 
