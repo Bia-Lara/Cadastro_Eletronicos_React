@@ -1,0 +1,18 @@
+.section {
+    text-align: center;
+    padding: 32px;
+   
+}
+    
+.section h3 {
+    font-size: 32px;
+    display: inline-block;
+    padding-bottom: 8px;
+}
+
+.section .sections{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    
+}
