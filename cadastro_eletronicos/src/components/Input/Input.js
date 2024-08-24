@@ -1,4 +1,5 @@
 import React from "react";
+import './Input.css'
 
 const Input = (props)=>{
 
@@ -8,9 +9,9 @@ const Input = (props)=>{
 
 
     return(
-        <div>
+        <div className="input">
             <label>{props.label}</label>
-            <input type={props.type} placeholder={props.placeholder} onChange={written}></input>
+            <input type={props.type} step={props.step} min={props.min} onChange={written} value={props.value}></input>
         </div>
     )
 }
