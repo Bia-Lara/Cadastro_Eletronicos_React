@@ -28,4 +28,5 @@ node_modules/
 
 # Arquivos de lock (opcional, se você não quiser rastrear mudanças em lock files)
 package-lock.json
+package.json
 yarn.lock
