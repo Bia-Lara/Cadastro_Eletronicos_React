@@ -1,0 +1,30 @@
+.eletronic {
+    width: 20%;
+    border-radius: 15px;
+    margin: 10px;
+}
+
+.eletronic .header {
+    background-color: #CCE2FF;
+    
+}
+.eletronic img {
+    width: 100px;
+    border-radius: 50%;
+    position: relative;
+    bottom: -50px;
+}
+.eletronic .rodape {
+    background: #FFFFFF;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 0px 0px 10px 10px;
+    padding-top: 90px;
+    padding-bottom: 40px;
+}
+.eletronic .rodape p{
+    color: #000;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
