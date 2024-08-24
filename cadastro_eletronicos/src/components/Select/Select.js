@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import './Select.css'
 
 const Select = (props)=>{
 
@@ -7,7 +8,7 @@ const Select = (props)=>{
     }
 
     return(
-        <div>
+        <div className='select'>
             <label>{props.label}</label>
             <select onChange={chosen}>
                 {props.itens.map(item=><option key={item}>{item}</option>)}
